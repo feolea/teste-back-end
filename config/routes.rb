@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  resources :contacts, only: [:new, :create, :show]
+  resources :contacts, only: %i[new create show]
 
   resources :visits, only: :create
 

@@ -1,4 +1,6 @@
-require "rspec/json_expectations"
+# frozen_string_literal: true
+
+require 'rspec/json_expectations'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
@@ -13,7 +15,7 @@ RSpec.configure do |config|
 
   config.filter_run_when_matching :focus
 
-  config.example_status_persistence_file_path = "spec/examples.txt"
+  config.example_status_persistence_file_path = 'spec/examples.txt'
 
   config.disable_monkey_patching!
 

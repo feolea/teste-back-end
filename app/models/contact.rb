@@ -7,8 +7,8 @@ class Contact
   field :name, type: String
   field :guid, type: String
 
-  validates_presence_of :email, :name
-  validates_uniqueness_of :email
+  validates :email, :name, presence: true
+  validates :email, uniqueness: true
 
-  index({ email: 1 }, { unique: true })
+  index({ email: 1 }, unique: true)
 end

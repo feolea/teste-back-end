@@ -6,8 +6,8 @@ class Visit
   field :timestamp, type: Integer
   field :url, type: String
 
-  validates_presence_of :guid, :timestamp, :url
+  validates :guid, :timestamp, :url, presence: true
 
-  index({ timestamp: -1 })
-  index({ timestamp: -1, guid: 1 }, { unique: true })
+  index(timestamp: -1)
+  index({ timestamp: -1, guid: 1 }, unique: true)
 end
