@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe ContactsController do
@@ -36,7 +38,7 @@ RSpec.describe ContactsController do
     context 'with invalid params' do
       it 'does not create a contact' do
         before_count = Contact.count
-        params = { contact: { name: 'Bla'}}
+        params = { contact: { name: 'Bla' } }
 
         post :create, params: params
 
@@ -65,7 +67,7 @@ RSpec.describe ContactsController do
       it 'responds_to json' do
         contact = Contact.create(name: 'Jason', email: 'kruger@jason.io')
 
-        expected_response = {name: 'Jason', email: 'kruger@jason.io'}
+        expected_response = { name: 'Jason', email: 'kruger@jason.io' }
 
         get :show, params: { id: contact._id, format: :json }
 
