@@ -39,6 +39,9 @@ And in another terminal:
 To run tests:
 `bundle exec rspec`
 
+To run Rubocop (Ruby Style Guide Lint):
+`bundle exec rubocop`
+
 Pages of this project that have the tracker:
   - localhost:3000/contacts/new
   - after you submit the form, the show page that you'll be redirected also have the tracker.
