@@ -6,10 +6,16 @@ It has an Redis at front to receive a huge amount of tracking data leaving the c
 
 Things you'll need to run on development:
 
-Dependencies:
+## Dependencies:
  - Ruby 2.5.5
  - Redis on port 6379
  - Sidekiq listening to development_default queue (for development)
+
+## Or
+  - Docker
+  - Docker Compose
+
+## Without Docker instructions:
 
  This project depends on Ruby described at `.ruby-version` file, if you dont known Ruby, take a look
 at [this](https://www.ruby-lang.org/en/documentation/installation/) and it is a good idea to use a manager like `rvm`, take a look [here](https://rvm.io/rvm/install).
@@ -37,7 +43,12 @@ And in another terminal:
 `bundle exec rails s`
 
 To run tests:
+
 `bundle exec rspec`
+
+NOTE: if you use docker and some tests fails, its because docker creates some dir owned by root, just run this to fix ownership of the directories to your user:
+
+`sudo chown $(whoami) -R .`
 
 To run Rubocop (Ruby Style Guide Lint):
 `bundle exec rubocop`
@@ -50,12 +61,15 @@ Report:
   - localhost:3000/visits/report
   - localhost:3000/visits/report.json
 
+Sidekiq:
+  - localhost:3000/sidekiq
 
-* Configuration
+## Instructions to run with Docker-Compose
 
-* Database creation
+Just:
 
-* Database initialization
+`docker-compose up --build`
 
-* Services (job queues, cache servers, search engines, etc.)
+The app will be up and running on localhost:3000 as above
 
+Enjoy!
