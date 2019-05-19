@@ -19,7 +19,7 @@ RSpec.configure do |config|
 
   config.disable_monkey_patching!
 
-  config.before(:all) do
+  config.before(:each) do
     Mongoid.purge!
   end
 

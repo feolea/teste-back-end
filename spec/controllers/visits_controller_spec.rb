@@ -51,8 +51,40 @@ RSpec.describe VisitsController do
   describe 'GET report' do
     context 'without params' do
       it 'returns up to 50 last visits' do
+        51.times { FactoryBot.create(:visit) }
+
         get :report, params: {}
 
+        expect(response).to have_http_status(:success)
+        expect(assigns[:visits].to_a.count).to eq(50)
+      end
+
+      it 'returns all visits if less then 50' do
+        49.times { FactoryBot.create(:visit) }
+
+        get :report, params: {}
+
+        expect(assigns[:visits].to_a.count).to eq 49
+      end
+
+      it 'order by timestamp descendant' do
+        FactoryBot.create(:visit, timestamp: 1)
+        FactoryBot.create(:visit, timestamp: 5)
+        FactoryBot.create(:visit, timestamp: 3)
+
+        get :report, params: {}
+
+        expect(assigns[:visits].to_a.map(&:timestamp)).to eq([5, 3, 1])
+      end
+    end
+
+    context 'with limit params' do
+      it 'returns the limit provided' do
+        50.times { FactoryBot.create(:visit) }
+
+        get :report, params: { limit: 48 }
+
+        expect(assigns[:visits].to_a.count).to eq(48)
         expect(response).to have_http_status(:success)
       end
     end

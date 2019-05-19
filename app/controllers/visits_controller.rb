@@ -17,7 +17,7 @@ class VisitsController < ApplicationController
   def report
     @visits = Visit
               .order(timestamp: :desc)
-              .limit(params[:limit].to_i || REPORT_LIMIT)
+              .limit(params[:limit] || REPORT_LIMIT)
   end
 
   private
