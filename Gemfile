@@ -11,6 +11,7 @@ gem 'rack-cors', '~> 1.0.3'
 gem 'rails', '~> 5.2.3'
 gem 'redis', '~> 4.0'
 gem 'sidekiq', '~> 5.2.7'
+gem 'tzinfo-data'
 
 gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
